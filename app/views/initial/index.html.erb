@@ -1,5 +1,30 @@
 <h1>SF Survivor Services</h1>
 
-<p> This will have the form</p>
+<form>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    GENDER:
+    <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="gender">
+      <li><a href="#">Male</a></li>
+      <li><a href="#">Female</a></li>
+      <li><a href="#">Trans-Male</a></li>
+      <li><a href="#">Trans-Female</a></li>
+    </ul>
+  </div>
+  <div class="form-group">
+  <label for="age">AGE:</label>
+  <input type="number" class="form-control" id="age">
+</div>
+</form>
 <a href="/query/new" class="button small">Get Organizations</a>
-<p>Find me in app/views/initial/index.html.erb</p>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel heading</div>
+
+  <!-- Table -->
+  <table class="table">
+    ...
+  </table>
+</div>
