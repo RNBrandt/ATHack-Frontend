@@ -21,10 +21,41 @@
 <a href="/query/new" class="button small">Get Organizations</a>
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
+  <div class="panel-heading">Support Services</div>
 
   <!-- Table -->
   <table class="table">
-    ...
+    <th>Organization Name</th>
+    <th>Genders Serviced</th>
+    <th>Ages Served</th>
+    <th>Languages Spoken</th>
+    <th>Services Provided</th>
+    <th>Address</th>
+    <th>Phone Numbers</th>
+    <th>Website</th>
+    <th>Email</th>
+    <% @api.each do |organization| %>
+      <td><%= organization.name %></td>
+      <td><% organization.each do |genders|%>
+        <%= genders.gender %></td>
+      <% end %>
+      <td><% organization.each do |ages|%>
+        <%= ages.minimum_age %> through <%= ages.maximum_age %></td>
+      <% end %>
+      <td><% organization.each do |languages|%>
+        <%= languages.language %></td>
+        <%end%>
+      <td><% organization.each do |services|%>
+        <%= services.service_type %></td>
+        <%end%>
+      <td><%= organization.address %></td>
+      <td><% organization.each do |phone_number|%>
+        <b><%= phone_number.description%></b>
+        <%= phone_number.number%></td>
+        <%end%></td>
+      <td><%= organization.website %></td>
+      <td><%= organization.email %></td>
+    <% end %>
+
   </table>
 </div>
