@@ -1,5 +1,60 @@
 <h1>SF Survivor Services</h1>
 
-<p> This will have the form</p>
-<a href="/query/new" class="button small">Get Organizations</a>
-<p>Find me in app/views/initial/index.html.erb</p>
+<form>
+  <div class="col-lg-6">
+    <div class="btn-group">
+      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Gender<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <% @languages.each do |language, value| %>
+            <li><input type="radio" id=<%=language%> value=<%=language%>><label for=<%=language%>><%=language%></label></li>
+          <% end %>
+        </ul>
+    </div>
+
+<!--     <div class="form-group"> -->
+      <label for="age">AGE:</label>
+      <input type="number" class="form-control col-lg-4 id="age">
+    <!-- </div> -->
+    <a href="/query/new" class="button small">Get Organizations</a>
+  </div>
+</form>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Support Services</div>
+
+  <!-- Table -->
+  <table class="table">
+    <th>Organization Name</th>
+    <th>Genders Serviced</th>
+    <th>Ages Served</th>
+    <th>Languages Spoken</th>
+    <th>Services Provided</th>
+    <th>Address</th>
+    <th>Phone Numbers</th>
+    <th>Website</th>
+    <th>Email</th>
+    <% @organizations.each do |organization| %>
+      <td><%= organization["name"] %></td>
+      <% organization["genders"].each do|gender| %>
+       <td> <%= p gender %></td>
+       <% end %>
+
+      <td><% organization.each do |ages|%>
+        <%= ages["minimum_age"] %> through <%= ages["maximum_age"] %></td>
+      <% end %>
+      <td><% organization.each do |languages|%>
+        <%= languages["language"] %></td>
+        <%end%>
+      <td><% organization.each do |services|%>
+        <%= services["service_type"] %></td>
+        <%end%>
+      <td><%= organization.address %></td>
+      <td><% organization.each do |phone_number|%>
+        <b><%= phone_number["description"]%></b>
+        <%= phone_number["number"]%></td>
+        <%end%></td>
+      <td><%= organization.website %></td>
+      <td><%= organization.email %></td>
+    <% end %>
+  </table>
+</div>
