@@ -33,24 +33,28 @@
     <th>Phone Numbers</th>
     <th>Website</th>
     <th>Email</th>
-    <tr>
-      <td>organization.each do |genders|%>
-         genders.gender %></td>
-      <td>organization.each do |ages|%>
-         ages.minimum_age %> through  ages.maximum_age %></td>
-      <td>organization.each do |languages|%>
-         languages.language %></td>
-      <td>organization.each do |services|%>
-         services.service_type %></td>
-      <td> organization.address %></td>
-      <td>organization.each do |phone_number|%>
-        <b> phone_number.description%></b>
-         phone_number.number%></td>
-        </td>
-      <td> organization.website %></td>
-      <td> organization.email %></td>
-    </tr>
+    <% @organizations.each do |organization| %>
+      <td><%= organization["name"] %></td>
+      <% organization["genders"].each do|gender| %>
+       <td> <%= p gender %></td>
+       <% end %>
 
-
+      <td><% organization.each do |ages|%>
+        <%= ages["minimum_age"] %> through <%= ages["maximum_age"] %></td>
+      <% end %>
+      <td><% organization.each do |languages|%>
+        <%= languages["language"] %></td>
+        <%end%>
+      <td><% organization.each do |services|%>
+        <%= services["service_type"] %></td>
+        <%end%>
+      <td><%= organization.address %></td>
+      <td><% organization.each do |phone_number|%>
+        <b><%= phone_number["description"]%></b>
+        <%= phone_number["number"]%></td>
+        <%end%></td>
+      <td><%= organization.website %></td>
+      <td><%= organization.email %></td>
+    <% end %>
   </table>
 </div>
