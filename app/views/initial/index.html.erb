@@ -1,27 +1,30 @@
 <h1>SF Survivor Services</h1>
 
-<form>
-  <div class="col-lg-6">
-    <div class="btn-group">
-      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Gender<span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <% @languages.each do |language, value| %>
-            <li><input type="radio" id=<%=language%> value=<%=language%>><label for=<%=language%>><%=language%></label></li>
-          <% end %>
-        </ul>
-    </div>
-
-<!--     <div class="form-group"> -->
-      <label for="age">AGE:</label>
-      <input type="number" class="form-control col-lg-4 id="age">
-    <!-- </div> -->
-    <a href="/query/new" class="button small">Get Organizations</a>
+<form class="form-horizontal" role="form">
+  <div class="btn-group">
+    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Gender<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <% @languages.each do |language, value| %>
+          <li><input type="radio" id=<%=language%> value=<%=language%>><label for=<%=language%>><%=language%></label></li>
+        <% end %>
+      </ul>
   </div>
+    <div class="form-group">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label for="age" class="col-md-1 control-label">AGE:</label>
+          <div class="col-md-2">
+            <input type="number" class="form-control" id="age">
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+  <a href="/query/new" class="button small">Get Organizations</a>
 </form>
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Support Services</div>
-
   <!-- Table -->
   <table class="table">
     <th>Organization Name</th>
@@ -30,31 +33,27 @@
     <th>Languages Spoken</th>
     <th>Services Provided</th>
     <th>Address</th>
-    <th>Phone Numbers</th>
+    <!-- <th>Phone Numbers</th> -->
     <th>Website</th>
     <th>Email</th>
     <% @organizations.each do |organization| %>
-      <td><%= organization["name"] %></td>
-      <% organization["genders"].each do|gender| %>
-       <td> <%= p gender %></td>
-       <% end %>
-
-      <td><% organization.each do |ages|%>
-        <%= ages["minimum_age"] %> through <%= ages["maximum_age"] %></td>
-      <% end %>
-      <td><% organization.each do |languages|%>
-        <%= languages["language"] %></td>
-        <%end%>
-      <td><% organization.each do |services|%>
-        <%= services["service_type"] %></td>
-        <%end%>
-      <td><%= organization.address %></td>
-      <td><% organization.each do |phone_number|%>
-        <b><%= phone_number["description"]%></b>
-        <%= phone_number["number"]%></td>
+      <tr> <td><%= organization["name"] %></td>
+      <td><% organization["genders"].each do|gender| %>
+        <%= gender %>,
+      <% end %></td>
+      <% min_age = organization["age"]["minimum_age"]
+         max_age = organization["age"]["maximum_age"]%>
+      <td><%= min_age %> through <%= max_age %></td>
+      <td><% organization["languages"].each do |language|%>
+        <%= language %>,
         <%end%></td>
-      <td><%= organization.website %></td>
-      <td><%= organization.email %></td>
+      <td><% organization["provided_services"].each do |service|%>
+        <%= service%>,
+        <%end%></td>
+      <td><%= organization["address"] %></td>
+      <td><a href=<%= organization["website"]%>> <%= organization["website"]%></a></td>
+      <td><a href=mailto:<%= organization["website"]%>> <%= organization["website"]%></a></td>
+      </tr>
     <% end %>
   </table>
 </div>
