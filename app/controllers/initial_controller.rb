@@ -5,6 +5,7 @@ class InitialController < ApplicationController
     response = HTTParty.get(url)
     @organizations = response.parsed_response
     language_lib(@organizations)
-    p @organizations[0]
+    gender_lib(@organizations)
+    p "*****************#{@genders}******"
   end
 end

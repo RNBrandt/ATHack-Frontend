@@ -13,6 +13,20 @@ module ApplicationHelper
     @languages
   end
 
+  def gender_lib(organizations)
+    @genders = {}
+    gender_list = []
+    organizations.each do |organization|
+      gender_list << organization["genders"]
+    end
+    gender_list.each do |gender_obj|
+      gender_obj.each do |gender|
+        @genders[gender] = true
+      end
+    end
+    @genders
+  end
+
 
 end
 
