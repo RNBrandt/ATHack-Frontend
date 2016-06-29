@@ -1,6 +1,6 @@
 <h1>SF Survivor Services</h1>
 
-<form_for :initial class="form-horizontal" role="form">
+<%= form_for :query, url: query_path do |f|%>
   <div class="btn-group">
     <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Language<span class="caret"></span></button>
       <ul class="dropdown-menu">
@@ -28,8 +28,8 @@
       </ul>
   </div>
   <!-- </div> -->
-  <a href="/query/new" class="button small">Get Organizations</a>
-</form>
+  <%= f.submit %>
+<% end %>
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">Support Services</div>
