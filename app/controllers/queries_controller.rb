@@ -1,5 +1,5 @@
 class QueriesController < ApplicationController
-  include ApplicationHelper
+include ApplicationHelper
   def index
     url = 'https://sf-survivor-services-api.herokuapp.com/organizations/'
     response = HTTParty.get(url)
@@ -9,8 +9,10 @@ class QueriesController < ApplicationController
     p "*****************#{@genders}******"
   end
 
-  def show
-
+  def create
+    p params[:query]
+    # url = "https://sf-survivor-services-api.herokuapp.com/organizations/"
+    # HTTParty.post(url),
+    # :headers => :params
   end
 end
-
