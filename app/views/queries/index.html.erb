@@ -5,7 +5,7 @@
     <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Language<span class="caret"></span></button>
       <ul class="dropdown-menu">
         <% @languages.each do |language, value| %>
-          <li><%= f.radio_button :language, language%><%=language%></li>
+          <li><%= f.radio_button :language, language%> <%=language.capitalize%></li>
         <% end %>
       </ul>
   </div>
@@ -21,7 +21,7 @@
     <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Gender:<span class="caret"></span></button>
       <ul class="dropdown-menu">
         <% @genders.each do |gender, value| %>
-          <li><input type="radio" id="gender" value=<%=gender%>><label for=<%=gender%>><%=gender%></label></li>
+          <li><%= f.radio_button :gender, gender%><%=gender%></li>
         <% end %>
       </ul>
   </div>

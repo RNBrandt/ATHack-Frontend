@@ -1,16 +1,20 @@
 module ApplicationHelper
   def language_lib(organizations)
-    @languages = {}
+    languages_hash = {}
     language_list = []
+    @languages = []
     organizations.each do |organization|
       language_list << organization["languages"]
     end
     language_list.each do |language|
       language.each do |words|
-        @languages[words] = true
+        languages_hash[words] = true
       end
     end
-    @languages
+    languages_hash.each do |word, value|
+      @languages << word
+    end
+    @languages.sort!
   end
 
   def gender_lib(organizations)

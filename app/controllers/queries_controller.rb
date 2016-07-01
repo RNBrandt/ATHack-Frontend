@@ -11,7 +11,7 @@ include ApplicationHelper
 
   def create
     p params[:query]
-    # url = "https://sf-survivor-services-api.herokuapp.com/organizations/"
+    url = "https://sf-survivor-services-api.herokuapp.com/organizations/"
     # HTTParty.post(url),
     # :headers => :params
   end
